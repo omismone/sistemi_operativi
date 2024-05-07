@@ -1,0 +1,55 @@
+\documentclass[openany]{book}
+\usepackage{graphicx,subcaption,wrapfig} % Required for inserting images
+\usepackage[top = 1cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\titleformat{\chapter}{\fontsize{25}{10}\bfseries}{}{0em}{\bf}
+\pagestyle{empty}
+\lstset{
+  language=C,
+  aboveskip=3mm, 
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  breaklines=true,
+  breakatwhitespace=true,
+}
+
+
+
+\title{Sistemi operativi}
+\author{Simone Migliazza}
+\date{}
+\renewcommand*\contentsname{Contenuti}
+
+
+
+\begin{document}
+\maketitle
+
+
+\tableofcontents
+
+\thispagestyle{empty}
+
+\input{chap1.tex}
+
+\input{chap2.tex}
+
+\input{chap3.tex}
+
+\input{chap4.tex}
+
+\input{chap5.tex}
+
+\input{chap6.tex}
+
+\input{chap7.tex}
+
+\input{chap8.tex}
+
+\end{document}
