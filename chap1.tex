@@ -12,21 +12,18 @@ La maggior parte dei sistemi operativi reali sono scritti in linguaggio C.
 I dispositivi di ingresso/uscita sono controllati mediante il caricamento di valori in speciali \textbf{registri di dispositivo}: per esempio, è possibile ordinare ad un disco di eseguire una lettura caricando nei suoi registri di dispositivo il valore dell'indirizzo su disco, l'indirizzo in memoria principale, numero di byte e direzione (lettura o scrittura).
 
 Il sistema operativo nasconde parzialmente l'hardware e dà al programmatore un insieme di istruzioni più pratico con cui lavorare.
-
 Esso è (normalmente) quella porzione di software che viene eseguita in modalità kernel, i compilatori e gli editor vengono eseguiti in modalità utente.
-In qualche sistema è difficile tracciare un confine netto: tutto ciò che vie-
-ne eseguito in modalità kernel fa ovviamente parte del sistema operativo, ma e possibile che alcuni programmi che non vengono eseguiti in questa modalità siano parte di esso o, almeno, gli siano strettamente collegati.
+In qualche sistema è difficile tracciare un confine netto: tutto ciò che viene eseguito in modalità kernel fa ovviamente parte del sistema operativo, ma e possibile che alcuni programmi che non vengono eseguiti in questa modalità siano parte di esso o, almeno, gli siano strettamente collegati.
 
 Il sistema operativo è normalmente protetto con meccanismi hardware da ogni tentativo di modifica da parte dell'utente.
 
 \section{Cos'è un sistema operativo}
-Il sistema operativo realizza due funzionalita che sono praticamente scorrelate, \textit{estende la macchina} e \textit{gestisce risorse}.
+Il sistema operativo realizza due funzionalità che sono praticamente scorrelate, \textit{estende la macchina} e \textit{gestisce risorse}.
 
 Per quanto riguarda la prima funzionalità: il sistema operativo fornisce una varietà di servizi, di cui i programmi possono usufruire attraverso istruzioni speciali dette chiamate di sistema (\textbf{system call}).
 
 E per la seconda: tiene traccia di chi stia usando quale risorsa, soddisfa le richieste delle risorse, contabilizza l'uso e media richieste conflittuali provenienti da programmi e utenti diversi.
-La gestione delle risorse comporta la loro condivisione sotto due aspetti: rispetto al tempo e rispetto allo spazio. Con quest'ultimo si intende per esempio la condivisione della memoria principale: essa è normalmente
-ripartita fra diversi programmi in esecuzione, così che possano stare in memoria contemporaneamente (per esempio, allo scopo di fare a turno per l'uso della CPU).
+La gestione delle risorse comporta la loro condivisione sotto due aspetti: rispetto al tempo e rispetto allo spazio. Con quest'ultimo si intende per esempio la condivisione della memoria principale: essa è normalmente ripartita fra diversi programmi in esecuzione, così che possano stare in memoria contemporaneamente (per esempio, allo scopo di fare a turno per l'uso della CPU).
 
 \section{Storia dei sistemi operativi}
 
@@ -44,16 +41,17 @@ Innovazione: \textbf{transistor}.
 Il costo dei calcolatori, di molti milioni di dollari, poteva essere affrontato solo da grosse compagnie, dalle agenzie governative o dalle università. Per far girare un \textbf{job} (cioè un programma o un insieme di programmi), un programmatore doveva prima scrivere il
 programma su carta (in FORTRAN\footnote{\textit{FOR}mule \textit{TRAN}slator} o in assembler), poi doveva copiarlo su schede perforate, infine doveva portare il pacchetto delle schede nella stanza dove venivano raccolti i programmi e darlo ad uno degli operatori. Dopodiché poteva andare a prendersi un caffè in attesa dei risultati in uscita. Appena il calcolatore aveva terminato il job in esecuzione in quel momento, qualsiasi cosa fosse, un operatore andava alla stampante, prelevava quanto prodotto in uscita dal job e lo portava nella stanza dove venivano distribuiti i risultati delle elaborazioni, in modo che il programmatore lo potesse ritirare più tardi; quindi prendeva uno dei pacchetti di schede dalla stanza di raccolta dei programmi e lo faceva leggere al calcolatore.  Se risultava necessario anche il compilatore FORTRAN, l'operatore lo doveva prendere dall'archivio e farlo leggere al calcolatore. Gran parte del tempo di elaborazione andava quindi sprecato mentre gli operatori andavano avanti e indietro per la sala macchine.
 
-Per ridurre il tempo la soluzione che venne adottata nella maggior parte dei casi fu quella dei \textbf{sistemi batch} (sistemi di elaborazione a lotti). L'idea era quella di raccogliere un intero cassetto di job nella stanza dedicata alla raccolta dei programmi e di farli trasferire su nastro magnetico da un piccolo calcolatore (relativamente) poco costoso,
+\paragraph*{}
+Per ridurre il tempo la soluzione che venne adottata nella maggior parte dei casi fu quella dei \textbf{sistemi batch} (sistemi di elaborazione a lotti). L'idea era quella di raccogliere un intero cassetto di job nella stanza dedicata alla raccolta dei programmi e di farli trasferire su nastro magnetico da un piccolo calcolatore (relativamente) poco costoso.
 Dopo circa un'ora durante la quale veniva raccolto un batch (lotto) di lavori, il nastro veniva riavvolto e portato nella sala macchine, dove veniva montato sul lettore di nastri. L'operatore caricava quindi un programma speciale (l'antenato degli attuali sistemi operativi) che leggeva il primo job e lo eseguiva; i dati in uscita, anziché venire stampati, venivano registrati su un secondo nastro magnetico. Dopo la fine di ognuno dei job, il sistema operativo leggeva in maniera automatica il prossimo job dal nastro di ingresso e lo mandava in esecuzione. Quando l'intero lotto di lavori era stato eseguito, l'operatore rimuoveva i nastri di ingresso e di uscita, li sostituiva con quelli di un nuovo lotto di lavori e prendeva il nastro di uscita per stamparne i dati fuori linea, cioè senza essere direttamente collegato al calcolatore principale.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{assets/batch1.png}
     \caption{Uno dei primi sistemi di elaborazione batch}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{assets/job1.png}
     \caption{Struttura di un tipico job FMS}
@@ -70,8 +68,9 @@ I sistemi di terza generazione resero popolare la tecnica della \textbf{multipro
     \caption{Esempio di multitasking}
 \end{figure}
 
-Un'altra caratteristica importante dei sistemi operativi della terza generazione era quella di permettere la lettura dei job dalle schede al disco non appena le schede venivano portate alla sala macchine. Poi, non appena il job in esecuzione terminava, il sistema operativo poteva caricare un nuovo job dal disco nella partizione di memoria che si era resa disponibile e mandarlo in esecuzione. Questa tecnica viene chiamata \textbf{spooling}.
+Un'altra caratteristica importante dei sistemi operativi della terza generazione era quella di permettere la lettura dei job dalle schede al disco non appena le schede venivano portate alla sala macchine: non appena il job in esecuzione terminava, il sistema operativo poteva caricare un nuovo job dal disco nella partizione di memoria che si era resa disponibile e mandarlo in esecuzione. Questa tecnica viene chiamata \textbf{spooling} (Simultaneous Peripheral Operation On Line) ed era usata anche per gestire l'uscita dei risultati.
 
+\paragraph*{}
 Il desiderio di un tempo di risposta veloce preparò la strada al \textbf{timesharing} (condivisione di tempo), una variante della multiprogrammazione nella quale ogni utente aveva a disposizione un terminale in linea. Nei sistemi timesharing, se 20 utenti erano collegati contemporaneamente e 17 di loro stavano pensando, bevendo caffè o parlando, la CPU poteva essere assegnata all'esecuzione a turno dei tre job che in quel momento richiedevano il servizio.
 
 \begin{figure}[h!]
@@ -80,6 +79,8 @@ Il desiderio di un tempo di risposta veloce preparò la strada al \textbf{timesh
     \caption{Esempio di condivisione del tempo}
 \end{figure}
 
+\paragraph*{}
+\paragraph*{}
 \subsection{La quarta generazione}
 
 Innovazione: \textbf{VLSI} (Very Large Scale Integration).
@@ -102,6 +103,8 @@ Quando deve essere eseguita un azione \textit{assolutamente} in un dato momento 
 Una categoria esemplificativa sono i sistemi digitali audio o quelli multimediali, essi fanno parte della categoria \textit{soft real-time systems}.
 
 
+\paragraph*{}
+\paragraph*{}
 \section{L'hardware dei calcolatori}
 I componenti principali che compongono un calcolatore sono:
 \begin{itemize}
@@ -114,7 +117,7 @@ I componenti principali che compongono un calcolatore sono:
 \subsection{Processore}
 Il processore è un chip che contiene una o più CPU.
 Il "cervello" di un calcolatore è la CPU, che recupera le istruzioni dalla memoria e le esegue. 
-Essa piò essere composta da più \textit{core}, che sono l'unità di elaborazione base di una CPU.
+Essa può essere composta da più \textit{core}, che sono l'unità di elaborazione base di una CPU.
 
 \begin{figure}[h!]
   \begin{subfigure}{.5\textwidth}
@@ -138,18 +141,20 @@ Occorre fare attenzione poiché aggiungere nuove CPU aumenta le prestazioni rela
     \caption{sistema NUMA}
 \end{figure}
 
+\paragraph*{}
 Il ciclo di azioni base eseguito da ogni CPU consiste nel recuperare la prima istruzione dalla memoria, decodificarla per determinarne tipo e operandi, ed eseguirla e quindi recuperare, decodificare, eseguire le istruzioni seguenti. In questo modo vengono completati i programmi. Ogni CPU è in grado di eseguire un insieme di istruzioni specifico.
 
 Tutte le CPU contengono, al loro interno, alcuni registri per mantenervi variabili chiave e risultati temporanei. Normalmente, l'insieme di istruzioni ne contiene quindi alcune per caricare una parola dalla memoria in un registro e per depositare una parola da un registro alla memoria.
 
 La maggior parte dei calcolatori ha parecchi registri speciali disponibili al programmatore. Uno di questi è il \textit{program counter}, o contatore di programma, che contiene l'indirizzo di memoria della prossima istruzione da andare a prendere (\textit{fetch}); dopo che l'istruzione è stata recuperata, il program counter viene aggiornato per puntare all'istruzione successiva. 
-Un altro registro è lo \textit{stack pointer} o puntatore alla pila, che punta alla cima dello stack corrente in memoria; tale stack o pila contiene una struttura (frame) per ogni procedura che è stata iniziata ma non è ancora terminata, ognuna delle quali contiene i parametri d'ingresso, e le variabili locali e temporanee che non vengono mantenuti nei registri.
+Un altro registro è lo \textit{stack pointer} o puntatore alla pila, che punta alla cima dello stack corrente in memoria; tale stack o pila contiene una struttura (frame) per ogni procedura che è stata iniziata ma non è ancora terminata: ognuna di queste procedure contiene i parametri d'ingresso e le variabili locali e temporanee che non vengono mantenute nei registri.
 
 Le CPU moderne hanno unità separate per le tre fasi di recupero, decodifica e esecuzione, così che, mentre è in esecuzione l'istruzione n, potrebbero essere in grado di decodificare l'istruzione n+1 e recuperare l'istruzione n+2. Un'organizzazione di questo tipo è detta \textit{pipeline}.
 
+\paragraph*{}
 La maggior parte delle CPU hanno due modalità, quella kernel e quella utente.
 Il sistema operativo viene eseguito nella prima modalità mentre i programmi utente nella seconda. Per ottenere servizi dal sistema operativo, un programma deve eseguire una chiamata di sistema o system call, che esegue una trap al kernel e invoca il sistema operativo: l'istruzione TRAP cambia da modalità utente a modalità kernel e avvia il sistema operativo.
-Gli elaboratori hanno altre istruzioni di tipo trap oltre a quella per eseguire chiamate di sistema: la maggior parte delle trap sono causate dall'hardware per avvisare di una situazione eccezionale, come può essere un tentativo di divisione per 0 o un underflow nell'aritmetica a virgola mobile. In ogni caso, il sistema operativo ottiene il controllo, e deve decidere cosa fare.
+Gli elaboratori hanno altre istruzioni di tipo TRAP oltre a quella per eseguire chiamate di sistema: la maggior parte delle TRAP sono causate dall'hardware per avvisare di una situazione eccezionale, come può essere un tentativo di divisione per 0 o un underflow nell'aritmetica a virgola mobile. In ogni caso, il sistema operativo ottiene il controllo, e deve decidere cosa fare.
 
 \subsection{Memoria (facoltativo)}
 La memoria ideale dovrebbe essere estremamente veloce (più veloce dell'esecuzione di un'istruzione, in modo che la CPU non sia rallentata).
